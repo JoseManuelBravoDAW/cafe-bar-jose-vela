@@ -1,0 +1,9 @@
+---
+type Props = {
+    titulo: string
+};
+const { titulo } = Astro.props;
+---
+<div class="h-screen flex items-center justify-start">
+    <h1 class="ml-12 text-4xl font-bold">{titulo}</h1>
+</div>

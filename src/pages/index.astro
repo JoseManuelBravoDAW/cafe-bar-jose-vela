@@ -1,5 +1,6 @@
 ---
-import Welcome from '../components/Welcome.astro';
+import Titulo from '../components/Titulo.astro';
+import TopMenu from '../components/TopMenu.astro';
 import Layout from '../layouts/Layout.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
@@ -7,5 +8,15 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-	<Welcome />
+	<main>
+		<TopMenu />
+		<!-- Presentación -->
+		<div class="h-screen">
+			<Titulo titulo="CAFÉ BAR JOSÉ VELA" />
+		</div>
+		<!-- Quienes somos -->
+		<div class="h-screen">
+			<Titulo titulo="QUIÉNES SOMOS" />
+		</div>
+	</main>
 </Layout>
