@@ -1,0 +1,41 @@
+---
+const { images, uniqueID = Math.floor(Math.random() * 1001) } = Astro.props;
+---
+<div class="relative w-full max-w-xl bg-white rounded-lg shadow-lg overflow-hidden">
+    <div id="carousel" class="relative">
+      <div class={`carousel-items-${uniqueID} flex`}>
+        <!-- Carousel Images -->
+         {images.map((image: string | null | undefined, index: number) => (
+          <img src={image} alt={`Image ${index + 1}`} class="w-full object-cover" />
+        ))}
+        
+      </div>
+    <script></script>
+      <!-- Navigation buttons -->
+      <button id={`prev-${uniqueID}`} class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-800 text-white p-3 rounded-full shadow-lg">
+        &#10094;
+      </button>
+      <button id={`next-${uniqueID}`} class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-800 text-white p-3 rounded-full shadow-lg">
+        &#10095;
+      </button>
+    </div>
+  </div>
+
+  <script define:vars={{ uniqueID }}>
+    const prevButton = document.getElementById('prev-' + uniqueID);
+    const nextButton = document.getElementById('next-' + uniqueID);
+    const carouselItems = document.querySelector('.carousel-items-' + uniqueID);
+    let index = 0;
+
+    // Handle next button
+    nextButton.addEventListener('click', () => {
+      index = (index + 1) % carouselItems.children.length;
+      carouselItems.style.transform = `translateX(-${index * 100}%)`;
+    });
+
+    // Handle previous button
+    prevButton.addEventListener('click', () => {
+      index = (index - 1 + carouselItems.children.length) % carouselItems.children.length;
+      carouselItems.style.transform = `translateX(-${index * 100}%)`;
+    });
+  </script>

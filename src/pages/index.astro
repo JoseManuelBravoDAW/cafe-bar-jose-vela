@@ -1,4 +1,5 @@
 ---
+import Carousel from '../components/Carousel.astro';
 import Titulo from '../components/Titulo.astro';
 import TopMenu from '../components/TopMenu.astro';
 import Layout from '../layouts/Layout.astro';
@@ -17,6 +18,8 @@ import Layout from '../layouts/Layout.astro';
 		<!-- Quienes somos -->
 		<div class="h-screen bg-once">
 			<Titulo titulo="QUIÉNES SOMOS" />
+			<Carousel images={['/about01.jpg', '/about02.jpg']} />
+			<Carousel images={['/about03.jpg', '/fondo.jpg', '/about02.jpg']} />
 		</div>
 	</main>
 </Layout>
