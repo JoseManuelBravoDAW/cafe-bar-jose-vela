@@ -1,0 +1,106 @@
+---
+const resenas = [
+  {
+    texto: "Excepcional trato, amable, amigable y además siempre con una sonrisa. Buen menú del día, casero y una surtida carta de tapas, en la que hay que destacar los calamares, un plato excepcional.",
+    autor: "Manuel Santiago",
+  },
+  {
+    texto: "Un sitio excelente tanto para desayunar, tapear, comer, copita de media tarde o cenar. Buen ambiente familiar, trato agradable. Cocina casera y de calidad. Terraza agradable Muy recomendable!!",
+    autor: "María Jiménez",
+  },
+  {
+    texto: "Trato familiar y muy agradable. Dispone de un salon perfecto para celebraciones y reuniones familiares, y por supuesto comida casera y de gran calidad, en especial sus calamares. Y todo esto a precios asequibles.",
+    autor: "Mayte Pedrero Fernández",
+  },
+];
+---
+
+<div class="resenas-container">
+    <h2>Reseñas</h2>
+    <div class="resena">
+      <p class="texto-resena">{resenas[0].texto}</p>
+      <p class="autor">{resenas[0].autor}</p>
+    </div>
+    <div class="botones-container">
+      <button class="anterior" id="anterior">&lt;</button>
+      <button class="siguiente" id="siguiente">&gt;</button>
+    </div>
+  </div>
+
+<style>
+  .resenas-container {
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
+    padding: 20px;
+  }
+
+  .resena {
+    text-align: center;
+    margin: 20px 0;
+  }
+
+  .autor {
+    font-style: italic;
+  }
+
+  .botones-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px; /* Espacio entre las reseñas y los botones */
+  }
+
+  /* Estilo de los botones */
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const textoResena = document.querySelector('.texto-resena');
+    const autorResena = document.querySelector('.autor');
+    const botonAnterior = document.getElementById('anterior');
+    const botonSiguiente = document.getElementById('siguiente');
+
+    // Comprobamos que los elementos estén presentes antes de intentar acceder a ellos
+    if (!textoResena || !autorResena || !botonAnterior || !botonSiguiente) {
+      console.error('Error: No se pudieron encontrar los elementos en el DOM.');
+      return;
+    }
+
+    let indiceResenaActual = 0; // Estado de la reseña actual
+    const resenas = [
+      { texto: "Excepcional trato, amable, amigable y además siempre con una sonrisa. Buen menú del día, casero y una surtida carta de tapas, en la que hay que destacar los calamares, un plato excepcional.", autor: "Manuel Santiago" },
+      { texto: "Otra reseña de prueba", autor: "Autor de prueba" }
+    ];
+
+    // Función para actualizar la reseña mostrada
+    function mostrarResena(indice: number) {
+      if (textoResena && autorResena) {
+        textoResena.textContent = resenas[indice].texto;
+        autorResena.textContent = resenas[indice].autor;
+      }
+    }
+
+    // Event listeners para los botones de "anterior" y "siguiente"
+    botonAnterior.addEventListener('click', () => {
+      indiceResenaActual = (indiceResenaActual - 1 + resenas.length) % resenas.length;
+      mostrarResena(indiceResenaActual);
+    });
+
+    botonSiguiente.addEventListener('click', () => {
+      indiceResenaActual = (indiceResenaActual + 1) % resenas.length;
+      mostrarResena(indiceResenaActual);
+    });
+
+    // Mostrar la primera reseña al cargar la página
+    mostrarResena(indiceResenaActual);
+  });
+</script>
+
+
+
+

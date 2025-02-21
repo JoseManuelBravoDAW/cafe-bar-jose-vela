@@ -1,6 +1,7 @@
 ---
 import Carousel from '../components/Carousel.astro';
 import Footer from '../components/Footer.astro';
+import Resenas from "../components/Resenas.astro";
 import Titulo from '../components/Titulo.astro';
 import TopMenu from '../components/TopMenu.astro';
 import Layout from '../layouts/Layout.astro';
@@ -24,6 +25,10 @@ import Layout from '../layouts/Layout.astro';
 			</div>
 			<Carousel images={['/about01.jpg', '/about02.jpg']} />
 			<Carousel images={['/about03.jpg', '/fondo.jpg', '/about02.jpg']} />
+			<div id="resenas">
+			<Titulo titulo="Reseñas"/>
+				<Resenas />
+			</div>
 	</main>
 	<footer>
 		<Footer />
