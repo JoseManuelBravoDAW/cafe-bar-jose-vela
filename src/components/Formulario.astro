@@ -1,6 +1,6 @@
 ---
 ---
-<form class="max-w-lg mx-auto p-6">
+<form id="contact-form" method="post" class="max-w-lg mx-auto p-6">
     <h2 class="text-2xl font-bold mb-6 text-gray-800">Contacto</h2>
     <div class="mb-4">
         <label for="name" class="block text-gray-700 font-bold mb-2">Nombre</label>
@@ -21,4 +21,34 @@
     <div class="text-center">
         <button type="submit" class="px-6 py-2 cursor-pointer bg-cinco text-white font-bold rounded-lg hover:bg-dos focus:outline-none focus:ring-2 focus:ring-uno">Enviar</button>
     </div>
+    <p id="form-status" class="text-center mt-4"></p>
 </form>
+<script>
+    // Form submission handler
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (event) => {
+            event.preventDefault(); // Prevent the default form submission
+            const form = event.target;
+            const formData = new FormData(form as HTMLFormElement);
+
+            // Send the form data to the server-side API (your Node.js endpoint)
+            const response = await fetch('/api/enviar-email', {
+                method: 'POST',
+                body: formData,
+            });
+
+            const statusElement = document.getElementById('form-status');
+
+            if (statusElement) {
+                if (response.ok) {
+                    statusElement.textContent = 'Tu consulta ha sido enviada correctamente. Nos pondremos en contacto contigo lo antes posible. ¡Gracias!';
+                    statusElement.style.color = 'green';
+                } else {
+                    statusElement.textContent = 'Se ha producido un error al enviar tu consulta.';
+                    statusElement.style.color = 'red';
+                }
+            }
+        });
+    }
+  </script>
