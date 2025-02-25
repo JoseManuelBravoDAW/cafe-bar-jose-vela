@@ -3,7 +3,7 @@ export const productsData = {
   entrantes: [
     {
       id: 1,
-      image: '/public/tortilla.jpg',
+      image: '/tortilla.jpg',
       nombre: 'Tortilla',
       decripcion: 'Racion',
       precio: '$5',
@@ -13,7 +13,7 @@ export const productsData = {
     },
     {
       id: 2,
-      image: '/public/queso.jpg',
+      image: '/queso.jpg',
       description: 'Queso',
       price: '$6',
       description2: 'Entrante de temporada',
@@ -22,7 +22,7 @@ export const productsData = {
     },
     {
       id: 4,
-      image: '/public/queso.jpg',
+      image: '/queso.jpg',
       description: 'Queso',
       price: '$6',
       description2: 'Entrante de temporada',
@@ -31,26 +31,36 @@ export const productsData = {
     },
     {
       id: 5,
-      image: '/public/queso.jpg',
+      image: '/queso.jpg',
       description: 'Queso',
       price: '$6',
       description2: 'Entrante de temporada',
       price2: '12€',
       allergens: ['gluten', 'egg'],	
     },
+    {
+    id:8,
+    image: '/queso.jpg',
+    description: 'Queso',
+    price: '$6',
+    description2: 'Entrante de temporada',
+    price2: '12€',
+    allergens: ['gluten', 'egg'],	
+  },
+
   ],
   pescado: [
     {
-      id: 3,
-      image: '/public/url-pescado-1.jpg',
+      id: 6,
+      image: '/queso.jpg',
       description: 'Pescado 1',
       price: '$12',
       description2: 'Pescado a la parrilla',
       price2: '20€',
     },
     {
-      id: 4,
-      image: '/public/url-pescado-2.jpg',
+      id: 7,
+      image: '/queso.jpg',
       description: 'Pescado 2',
       price: '$15',
       description2: 'Pescado al horno',
