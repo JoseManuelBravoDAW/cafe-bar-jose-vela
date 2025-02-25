@@ -1,0 +1,63 @@
+.menu-title {
+  text-align: center;
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+
+.menu-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.menu-item {
+  width: calc(25% - 2%); /* Ajusta el ancho para mostrar 4 elementos por fila */
+  margin: 1%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  background-color: #fff;
+  transition: transform 0.3s;
+}
+
+.menu-item:hover {
+  transform: scale(1.05); /* Efecto de escala al pasar el mouse */
+}
+
+.menu-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  max-height: 150px; /* Ajusta la altura máxima de la imagen */
+  object-fit: cover; /* Ajusta la imagen para que cubra el contenedor */
+}
+
+.menu-description {
+  margin: 0.5rem 0;
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 768px) {
+  .menu-item {
+    width: calc(50% - 2%); /* Dos elementos por fila en pantallas pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  .menu-item {
+    width: 100%; /* Un elemento por fila en pantallas muy pequeñas */
+    display: flex; /* Para disposición horizontal */
+    align-items: center; /* Centra verticalmente el contenido */
+  }
+
+  .menu-image {
+    width: 40%; /* Ancho de la imagen en la disposición horizontal */
+    margin-right: 1rem; /* Espacio entre imagen y texto */
+  }
+
+  .menu-description-container {
+    width: 60%; /* Ancho del contenedor de descripción */
+    text-align: left; /* Alinea el texto a la izquierda */
+  }
+}

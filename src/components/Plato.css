@@ -1,0 +1,66 @@
+.platos-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center the items */
+}
+
+.plato {
+  border: 1px solid #ddd;
+  padding: 16px;
+  margin: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  width: calc(25% - 32px); /* 25% width minus margins for 4 columns */
+  box-sizing: border-box; /* Include padding and border in width */
+}
+
+.plato:hover {
+  transform: scale(1.05); /* Efecto de escala al pasar el mouse */
+}
+
+.plato-imagen {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.plato-nombre {
+  font-size: 1.5em;
+  margin: 8px 0;
+}
+
+.plato-descripcion {
+  font-size: 1em;
+  color: #555;
+}
+
+.plato-precio, .plato-precio-mitad {
+  font-size: 1.2em;
+  color: #333;
+  margin: 8px 0;
+}
+
+.plato-alergenos {
+  list-style: none;
+  padding: 0;
+}
+
+.plato-alergenos li {
+  display: inline-block;
+  background: #eee;
+  padding: 4px 8px;
+  margin: 4px;
+  border-radius: 4px;
+}
+
+/* Mobile Styles - Keep these for smaller screens */
+@media (max-width: 768px) {
+  .plato {
+    width: 100%; /* Full width on mobile */
+    margin: 16px 0; /* Adjust margins for mobile */
+  }
+  .plato-imagen {
+    margin-bottom: 1rem; /* Space below image on mobile */
+  }
+}

@@ -1,0 +1,138 @@
+---
+import { Image } from 'astro:assets';
+
+export interface Props {
+  product: {
+    id: number;
+    image: string;
+    description: string;
+    price: string;
+    description2?: string;
+    price2?: string;
+    allergens?: string[];
+  };
+}
+
+const { product } = Astro.props;
+
+// Lógica para isMobile DENTRO del componente:
+const userAgent = Astro.request.headers.get('user-agent') || '';
+const isMobile = /Mobi|Android/i.test(userAgent);
+
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plato</title>
+</head>
+<body>
+  <div class={`plato ${isMobile ? 'mobile' : ''}`}>
+    <img src={product.image} alt={product.description} class="plato-imagen" />
+    <div class="details">
+      <h3 class="plato-nombre">{product.description}</h3>
+      <p class="plato-descripcion">{product.description2}</p>
+      <div class="plato-precio">
+        <span>{product.price}</span>
+        {product.price2 && <span class="plato-precio-mitad">{product.price2} (Media ración)</span>}
+      </div>
+      {product.allergens && (
+        <ul class="plato-alergenos">
+          {product.allergens.map(allergen => (
+            <li>{allergen}</li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </div>
+</body>
+</html>
+
+<style>
+  .plato {
+    border: 1px solid #ddd;
+    padding: 16px;
+    margin: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .plato:hover {
+    transform: scale(1.05); /* Efecto de escala al pasar el mouse */
+  }
+
+  .plato-imagen {
+    width: 40%;
+    height: auto;
+    border-radius: 8px;
+    margin-right: 1rem;
+  }
+
+  .plato-nombre {
+    font-size: 1.5em;
+    margin: 8px 0;
+  }
+
+  .plato-descripcion {
+    font-size: 1em;
+    color: #555;
+  }
+
+  .plato-precio, .plato-precio-mitad {
+    font-size: 1.2em;
+    color: #333;
+    margin: 8px 0;
+  }
+
+  .plato-alergenos {
+    list-style: none;
+    padding: 0;
+  }
+
+  .plato-alergenos li {
+    display: inline-block;
+    background: #eee;
+    padding: 4px 8px;
+    margin: 4px;
+    border-radius: 4px;
+  }
+
+  /* Estilos para pantallas pequeñas */
+  @media (max-width: 768px) {
+    .plato {
+      flex-direction: row;
+    }
+
+    .plato-imagen {
+      width: 40%;
+      margin-right: 1rem;
+    }
+
+    .details {
+      width: 60%;
+      text-align: left;
+    }
+  }
+
+  /* Estilos para pantallas grandes */
+  @media (min-width: 769px) {
+    .plato {
+      flex-direction: column;
+    }
+
+    .plato-imagen {
+      width: 100%;
+      margin-right: 0;
+    }
+
+    .details {
+      width: 100%;
+      text-align: left;
+    }
+  }
+</style>

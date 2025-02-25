@@ -1,0 +1,41 @@
+---
+const categories = ['Entrantes', 'Carnes', 'Pescado', 'Molletes', 'Postres', 'Alérgenos'];
+const allergens = ['Gluten', 'Lácteos', 'Frutos secos', 'Huevos', 'Pescado'];
+import '../styles/NavBar.css'; // Asegúrate de que la ruta sea correcta
+---
+
+<nav class="navbar">
+  <button class="menu-toggle" aria-label="Toggle menu">
+    ☰
+  </button>
+  <ul class="categories">
+    {categories.map(category => (
+      <li id={category} class="category">
+        <a href={`#${category.toLowerCase()}`} class="category-link">{category}</a>
+      </li>
+    ))}
+  </ul>
+  <div class="filter">
+    <label for="allergen-filter">Filtrar por alérgenos:</label>
+    <select id="allergen-filter" class="allergen-select">
+      <option value="">Todos</option>
+      {allergens.map(allergen => (
+        <option value={allergen}>{allergen}</option>
+      ))}
+    </select>
+  </div>
+</nav>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const categories = document.querySelector('.categories');
+
+    if (menuToggle) {
+      menuToggle.addEventListener('click', () => {
+      });
+    }
+    });
+</script>
+
+

@@ -4,14 +4,13 @@ import Footer from '../components/Footer.astro';
 import Titulo from '../components/Titulo.astro';
 import TopMenu from '../components/TopMenu.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
 	<main>
 		<TopMenu />
+		
+		 <!-- Inserta el componente Menu aquí -->
 		<!-- Presentación -->
 		<div class="h-screen bg-cover bg-[url('/fondo.jpg')]">
 			<Titulo titulo="CAFÉ BAR JOSÉ VELA" />
@@ -19,11 +18,14 @@ import Layout from '../layouts/Layout.astro';
 		<!-- Quienes somos -->
 		<div class="h-screen bg-once">
 			<Titulo titulo="QUIÉNES SOMOS" />
-			<!-- 
-				-->
-			</div>
-			<Carousel images={['/about01.jpg', '/about02.jpg']} />
-			<Carousel images={['/about03.jpg', '/fondo.jpg', '/about02.jpg']} />
+		</div>
+		<Carousel images={['/about01.jpg', '/about02.jpg']} />
+		<Carousel images={['/about03.jpg', '/fondo.jpg', '/about02.jpg']} />
+		<div class="h-screen bg-once">
+			<Titulo titulo="Carta" />
+		</div>
+			 <!-- Inserta el componente Menu aquí, si es diferente de Carta -->
+		
 	</main>
 	<footer>
 		<Footer />
