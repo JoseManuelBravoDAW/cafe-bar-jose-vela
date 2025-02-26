@@ -1,6 +1,5 @@
 ---
 const categories = ['Entrantes', 'Carnes', 'Pescado', 'Molletes', 'Postres', 'Alérgenos'];
-const allergens = ['Gluten', 'Lácteos', 'Frutos secos', 'Huevos', 'Pescado'];
 import '../styles/NavBar.css'; // Asegúrate de que la ruta sea correcta
 ---
 
@@ -15,15 +14,6 @@ import '../styles/NavBar.css'; // Asegúrate de que la ruta sea correcta
       </li>
     ))}
   </ul>
-  <div class="filter">
-    <label for="allergen-filter">Filtrar por alérgenos:</label>
-    <select id="allergen-filter" class="allergen-select">
-      <option value="">Todos</option>
-      {allergens.map(allergen => (
-        <option value={allergen}>{allergen}</option>
-      ))}
-    </select>
-  </div>
 </nav>
 
 <script>
@@ -33,9 +23,12 @@ import '../styles/NavBar.css'; // Asegúrate de que la ruta sea correcta
 
     if (menuToggle) {
       menuToggle.addEventListener('click', () => {
+        if (categories) {
+          categories.classList.toggle('open');
+        }
       });
     }
-    });
+  });
 </script>
 
 
