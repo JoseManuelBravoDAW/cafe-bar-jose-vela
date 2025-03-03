@@ -1,0 +1,135 @@
+---
+const resenas = [
+  {
+    texto: "Excepcional trato, amable, amigable y además siempre con una sonrisa. Buen menú del día, casero y una surtida carta de tapas, en la que hay que destacar los calamares, un plato excepcional.",
+    autor: "Manuel Santiago",
+  },
+  {
+    texto: "Un sitio excelente tanto para desayunar, tapear, comer, copita de media tarde o cenar. Buen ambiente familiar, trato agradable. Cocina casera y de calidad. Terraza agradable Muy recomendable!!",
+    autor: "María Jiménez",
+  },
+  {
+    texto: "Trato familiar y muy agradable. Dispone de un salon perfecto para celebraciones y reuniones familiares, y por supuesto comida casera y de gran calidad, en especial sus calamares. Y todo esto a precios asequibles.",
+    autor: "Mayte Pedrero Fernández",
+  },
+];
+---
+
+<div class="resenas-container">
+  <div class="resena-wrapper">
+    <!-- Flecha izquierda -->
+    <button id="anterior" class="flecha">&lt;</button>
+    
+    <div class="resena">
+      <p class="texto-resena">{resenas[0].texto}</p>
+      <p class="autor">- {resenas[0].autor}</p>
+    </div>
+    
+    <!-- Flecha derecha -->
+    <button id="siguiente" class="flecha">&gt;</button>
+  </div>
+</div>
+
+<style>
+  .resenas-container {
+    text-align: center;
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .resena-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px; /* Espacio entre las flechas y el texto */
+  }
+
+  .resena {
+    flex: 1;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-align: center;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .autor {
+    font-style: italic;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  .flecha {
+    background: none;
+    border: none;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+
+  .flecha:hover {
+    transform: scale(1.2);
+  }
+</style>
+
+<script>
+  const resenas = [
+    { texto: "Excepcional trato, amable, amigable y además siempre con una sonrisa. Buen menú del día, casero y una surtida carta de tapas, en la que hay que destacar los calamares, un plato excepcional.", autor: "Manuel Santiago" },
+    { texto: "Un sitio excelente tanto para desayunar, tapear, comer, copita de media tarde o cenar. Buen ambiente familiar, trato agradable. Cocina casera y de calidad. Terraza agradable Muy recomendable!!", autor: "María Jiménez" },
+    { texto: "Trato familiar y muy agradable. Dispone de un salon perfecto para celebraciones y reuniones familiares, y por supuesto comida casera y de gran calidad, en especial sus calamares. Y todo esto a precios asequibles.", autor: "Mayte Pedrero Fernández" }
+  ];
+
+  function mostrarResena(indice: number) {
+    const textoResena = document.querySelector('.texto-resena') as HTMLElement;
+    const autorResena = document.querySelector('.autor') as HTMLElement;
+
+    if (textoResena && autorResena) {
+      textoResena.style.opacity = '0';
+      autorResena.style.opacity = '0';
+    }
+
+    setTimeout(() => {
+      if (textoResena) {
+        textoResena.textContent = `"${resenas[indice].texto}"`;
+      }
+      if (autorResena) {
+        autorResena.textContent = `- ${resenas[indice].autor}`;
+      }
+      if (textoResena) {
+        textoResena.style.opacity = '1';
+      }
+      if (autorResena) {
+        autorResena.style.opacity = '1';
+      }
+    }, 300);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const botonAnterior = document.getElementById('anterior');
+    const botonSiguiente = document.getElementById('siguiente');
+
+    let indiceResenaActual = 0;
+
+    // Event listeners para los botones de "anterior" y "siguiente"
+    if (botonAnterior) {
+      botonAnterior.addEventListener('click', () => {
+        indiceResenaActual = (indiceResenaActual - 1 + resenas.length) % resenas.length;
+        mostrarResena(indiceResenaActual);
+      });
+    }
+
+    if (botonSiguiente) {
+      botonSiguiente.addEventListener('click', () => {
+        indiceResenaActual = (indiceResenaActual + 1) % resenas.length;
+        mostrarResena(indiceResenaActual);
+      });
+
+      // Mostrar la primera reseña al cargar la página
+      mostrarResena(indiceResenaActual);
+    }
+  });
+</script>
