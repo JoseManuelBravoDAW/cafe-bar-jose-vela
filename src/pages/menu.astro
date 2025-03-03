@@ -75,14 +75,7 @@ export const prerender = false;
 
   @media (max-width: 768px) {
     .menu-item {
-      flex: 1 1 45%; /* 2 columnas en pantallas pequeñas */
-      max-width: 45%;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .menu-item {
-      flex: 1 1 100%; /* 1 columna en pantallas muy pequeñas */
+      flex: 1 1 100%; /* 1 columna en pantallas pequeñas */
       max-width: 100%;
     }
   }
@@ -106,7 +99,7 @@ export const prerender = false;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    height: 600px; /* Aumenta la altura fija para todos los contenedores */
+    height: auto; /* Ajusta la altura automáticamente */
     font-family: 'Montserrat', sans-serif; /* Aplica la fuente Montserrat */
     overflow: hidden; /* Evita que el contenido sobresalga */
   }
@@ -121,11 +114,12 @@ export const prerender = false;
     overflow: hidden; /* Oculta cualquier contenido que se desborde */
     border-radius: 8px;
     margin-bottom: 1rem;
+    position: relative;
   }
 
   .plato-imagen {
     width: 100%;
-    height: 100%; /* Altura fija para todas las imágenes */
+    height: 100%;
     object-fit: cover; /* Asegura que la imagen cubra el área sin distorsión */
     border-radius: 8px;
   }
@@ -134,7 +128,6 @@ export const prerender = false;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: calc(100% - 216px); /* Resta la altura de la imagen + márgenes */
     width: 100%;
   }
 
@@ -160,7 +153,8 @@ export const prerender = false;
   .plato-alergenos {
     list-style: none;
     padding: 0;
-    margin-bottom: 1rem; /* Añade margen inferior */
+    margin: 1rem 0; /* Añade margen superior e inferior */
+    text-align: center; /* Centra el texto de los alérgenos */
   }
 
   .plato-alergenos li {
@@ -176,23 +170,52 @@ export const prerender = false;
     .plato {
       flex-direction: row; /* Cambia la dirección del flex a fila */
       align-items: flex-start; /* Alinea los elementos al inicio */
+      height: auto; /* Ajusta la altura automáticamente */
+      padding: 8px; /* Reduce el padding */
     }
 
     .plato-imagen-container {
-      width: 40%; /* Ajusta el ancho del contenedor de la imagen */
-      height: auto; /* Permite que la altura se ajuste automáticamente */
+      width: 50%; /* Ajusta el ancho del contenedor de la imagen */
+      height: 150px; /* Altura fija para la imagen en pantallas pequeñas */
       margin-right: 1rem; /* Añade margen a la derecha */
       margin-bottom: 0; /* Elimina el margen inferior */
+      position: relative;
     }
 
     .plato-imagen {
       width: 100%;
-      height: auto; /* Permite que la altura se ajuste automáticamente */
+      height: 100%;
+      object-fit: cover; /* Asegura que la imagen cubra el área sin distorsión */
     }
 
     .details {
-      width: 60%; /* Ajusta el ancho del contenedor de detalles */
+      width: 50%; /* Ajusta el ancho del contenedor de detalles */
       text-align: left; /* Alinea el texto a la izquierda */
+    }
+
+    .plato-nombre {
+      font-size: 1.2em; /* Reduce el tamaño de la fuente */
+    }
+
+    .plato-descripcion {
+      font-size: 0.9em; /* Reduce el tamaño de la fuente */
+    }
+
+    .plato-precio {
+      font-size: 1em; /* Reduce el tamaño de la fuente */
+    }
+
+    .plato-alergenos {
+      position: static; /* Elimina la posición absoluta */
+      transform: none; /* Elimina la transformación */
+      margin-top: 1rem; /* Añade margen superior */
+      text-align: center; /* Centra el texto de los alérgenos */
+      width: 100%; /* Asegura que ocupe todo el ancho */
+    }
+
+    .plato-alergenos li {
+      padding: 2px 4px; /* Reduce el padding */
+      margin: 2px; /* Reduce el margen */
     }
   }
 
@@ -200,9 +223,10 @@ export const prerender = false;
   @media (min-width: 769px) {
     .plato {
       flex-direction: column;
+      height: 600px; /* Altura fija para todos los contenedores en pantallas grandes */
     }
 
-    .plato-imagen {
+    .plato-imagen-container {
       width: 100%;
       height: 200px;
       margin-right: 0;
