@@ -1,5 +1,4 @@
 ---
-// filepath: /mnt/c/Users/bcube/cafe-bar-jose-vela/src/components/Plato.astro
 import { Image } from 'astro:assets';
 
 export interface Props {
@@ -7,6 +6,7 @@ export interface Props {
     id: number;
     image: string;
     description: string;
+    description1: string;
     price: string;
     description2?: string;
     price2?: string;
@@ -15,22 +15,19 @@ export interface Props {
 }
 
 const { product } = Astro.props;
-
-// Lógica para isMobile DENTRO del componente:
-;
-
 ---
 
-<div class=plato>
-  <img src={product.image} alt={product.description} class="plato-imagen" />
+<div class="plato">
+  <div class="plato-imagen-container">
+    <img src={product.image} alt={product.description} class="plato-imagen" />
+  </div>
   <div class="details">
     <h3 class="plato-nombre">{product.description}</h3>
-    <p class="plato-descripcion">{product.description2}</p>
-    <div class="plato-precio">
-      <span>{product.price}</span>
-      {product.price2 && <span class="plato-precio-mitad">{product.price2} (Media ración)</span>}
-    </div>
-    {product.allergens && (
+    {product.description1 && <p class="plato-descripcion">{product.description1}</p>}
+    <p class="plato-precio">{product.price}</p>
+    {product.description2 && <p class="plato-descripcion">{product.description2}</p>}
+    {product.price2 && <p class="plato-precio">{product.price2}</p>}
+    {product.allergens && product.allergens.length > 0 && (
       <ul class="plato-alergenos">
         {product.allergens.map(allergen => (
           <li>{allergen}</li>
@@ -41,6 +38,8 @@ const { product } = Astro.props;
 </div>
 
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
   .plato {
     border: 1px solid #ddd;
     padding: 16px;
@@ -49,12 +48,18 @@ const { product } = Astro.props;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 600px; /* Aumenta la altura fija para todos los contenedores */
+    font-family: 'Montserrat', sans-serif; /* Aplica la fuente Montserrat */
+    overflow: hidden; /* Evita que el contenido sobresalga */
   }
 
   .plato:hover {
     transform: scale(1.05); /* Efecto de escala al pasar el mouse */
   }
+
   .plato-imagen-container {
     width: 100%;
     height: 200px; /* Altura fija para el contenedor de la imagen */
@@ -65,10 +70,17 @@ const { product } = Astro.props;
 
   .plato-imagen {
     width: 100%;
-    height:100%; /* Altura fija para todas las imágenes */
+    height: 100%; /* Altura fija para todas las imágenes */
     object-fit: cover; /* Asegura que la imagen cubra el área sin distorsión */
     border-radius: 8px;
-    margin-bottom: 1rem;
+  }
+
+  .details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100% - 216px); /* Resta la altura de la imagen + márgenes */
+    width: 100%;
   }
 
   .plato-nombre {
@@ -79,17 +91,21 @@ const { product } = Astro.props;
   .plato-descripcion {
     font-size: 1em;
     color: #555;
+    text-align: center; /* Centra el texto de las descripciones */
+    margin: 4px 0;
   }
 
-  .plato-precio, .plato-precio-mitad {
+  .plato-precio {
     font-size: 1.2em;
     color: #333;
-    margin: 8px 0;
+    margin: 4px 0;
+    text-align: center; /* Centra el texto de los precios */
   }
 
   .plato-alergenos {
     list-style: none;
     padding: 0;
+    margin-bottom: 1rem; /* Añade margen inferior */
   }
 
   .plato-alergenos li {
@@ -124,7 +140,7 @@ const { product } = Astro.props;
     }
 
     .plato-imagen {
-      width: 200px;
+      width: 100%;
       height: 200px;
       margin-right: 0;
     }

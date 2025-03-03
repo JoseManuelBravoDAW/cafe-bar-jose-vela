@@ -1,5 +1,4 @@
 ---
-// filepath: /mnt/c/Users/bcube/cafe-bar-jose-vela/src/pages/menu.astro
 import { fetchProductsByCategory } from '../services/fetchProducts';
 import NavCarta from '../components/NavCarta.astro';
 import Plato from '../components/Plato.astro';
@@ -10,6 +9,7 @@ interface Product {
   id: number;
   image: string;
   description: string;
+  description1: string;
   price: string;
   description2?: string;
   price2?: string;
@@ -18,8 +18,6 @@ interface Product {
 
 const products: Product[] = await fetchProductsByCategory(category);
 export const prerender = false;
-// import Layout from '../../components/Layout.astro';
-const headers = Astro.request.headers;
 ---
 
 <!DOCTYPE html>
@@ -34,19 +32,20 @@ const headers = Astro.request.headers;
 
   <div class="menu-container">
     {products.map(product => (
-      
+      <div class="menu-item">
         <Plato 
           product={{
             id: product.id,
             image: product.image,
             description: product.description,
+            description1: product.description1,
             price: product.price,
             description2: product.description2,
             price2: product.price2,
             allergens: product.allergens
           }}
         />
-      
+      </div>
     ))}
   </div>
 </body>
@@ -94,5 +93,124 @@ const headers = Astro.request.headers;
     object-fit: cover; /* Asegura que la imagen cubra el área sin distorsión */
     border-radius: 8px;
     margin-bottom: 1rem;
+  }
+
+  .plato {
+    border: 1px solid #ddd;
+    padding: 16px;
+    margin: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 600px; /* Aumenta la altura fija para todos los contenedores */
+    font-family: 'Montserrat', sans-serif; /* Aplica la fuente Montserrat */
+    overflow: hidden; /* Evita que el contenido sobresalga */
+  }
+
+  .plato:hover {
+    transform: scale(1.05); /* Efecto de escala al pasar el mouse */
+  }
+
+  .plato-imagen-container {
+    width: 100%;
+    height: 200px; /* Altura fija para el contenedor de la imagen */
+    overflow: hidden; /* Oculta cualquier contenido que se desborde */
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+
+  .plato-imagen {
+    width: 100%;
+    height: 100%; /* Altura fija para todas las imágenes */
+    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsión */
+    border-radius: 8px;
+  }
+
+  .details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100% - 216px); /* Resta la altura de la imagen + márgenes */
+    width: 100%;
+  }
+
+  .plato-nombre {
+    font-size: 1.5em;
+    margin: 8px 0;
+  }
+
+  .plato-descripcion {
+    font-size: 1em;
+    color: #555;
+    text-align: center; /* Centra el texto de las descripciones */
+    margin: 4px 0;
+  }
+
+  .plato-precio {
+    font-size: 1.2em;
+    color: #333;
+    margin: 4px 0;
+    text-align: center; /* Centra el texto de los precios */
+  }
+
+  .plato-alergenos {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1rem; /* Añade margen inferior */
+  }
+
+  .plato-alergenos li {
+    display: inline-block;
+    background: #eee;
+    padding: 4px 8px;
+    margin: 4px;
+    border-radius: 4px;
+  }
+
+  /* Estilos para pantallas pequeñas */
+  @media (max-width: 768px) {
+    .plato {
+      flex-direction: row; /* Cambia la dirección del flex a fila */
+      align-items: flex-start; /* Alinea los elementos al inicio */
+    }
+
+    .plato-imagen-container {
+      width: 40%; /* Ajusta el ancho del contenedor de la imagen */
+      height: auto; /* Permite que la altura se ajuste automáticamente */
+      margin-right: 1rem; /* Añade margen a la derecha */
+      margin-bottom: 0; /* Elimina el margen inferior */
+    }
+
+    .plato-imagen {
+      width: 100%;
+      height: auto; /* Permite que la altura se ajuste automáticamente */
+    }
+
+    .details {
+      width: 60%; /* Ajusta el ancho del contenedor de detalles */
+      text-align: left; /* Alinea el texto a la izquierda */
+    }
+  }
+
+  /* Estilos para pantallas grandes */
+  @media (min-width: 769px) {
+    .plato {
+      flex-direction: column;
+    }
+
+    .plato-imagen {
+      width: 100%;
+      height: 200px;
+      margin-right: 0;
+    }
+
+    .details {
+      width: 100%;
+      text-align: left;
+    }
   }
 </style>
