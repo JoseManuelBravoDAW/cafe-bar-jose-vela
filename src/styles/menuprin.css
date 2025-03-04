@@ -2,14 +2,21 @@
   text-align: center;
   padding: 20px;
   background-color: #f6eceb; /* Color de fondo igual al de la navbar */
+  min-height: 80vh; /* Ajusta la altura mínima del contenedor */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .menu-title {
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
 .menu-description {
+  font-size: 1.2rem;
   color: gray;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
+  text-align: center;
 }
 .category-buttons {
   display: flex;
@@ -26,47 +33,6 @@
 .category-button.active {
   background-color: white;
   color: black;
-}
-.carousel-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  width: 100%;
-  max-width: 1200px; /* Ajusta el tamaño máximo del contenedor */
-  margin: 0 auto;
-}
-.carousel {
-  display: flex;
-  justify-content: center;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  width: 100%;
-}
-.carousel-item {
-  width: 50vw; /* Aumenta el ancho del contenedor */
-  height: 40vh; /* Aumenta la altura del contenedor */
-  flex: 0 0 auto;
-  scroll-snap-align: center;
-  margin: 0 10px;
-  padding: 20px; /* Ajusta el padding */
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
-}
-.carousel-item:hover {
-  transform: scale(1.05);
-}
-.carousel-image {
-  width: 100%;
-  height: 100%; /* Ajusta la altura de la imagen para llenar el contenedor */
-  object-fit: cover; /* Asegura que la imagen cubra el contenedor manteniendo su proporción */
-  border-radius: 8px;
-}
-.carousel-title {
-  font-size: 20px; /* Aumenta el tamaño del texto */
-  margin-top: 10px;
 }
 
 /* Estilos para pantallas pequeñas */

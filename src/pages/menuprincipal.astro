@@ -1,11 +1,41 @@
 ---
 import { productsData } from '../data/products.js';
+
+type Product = {
+  image: string;
+  description: string;
+ 
+};
+
+type ProductsData = {
+  entrantes: {
+    id: number;
+    image: string;
+    description: string;
+    description1: string;
+    price: string;
+    description2: string;
+    price2: string;
+    allergens: string[];
+  }[];
+  carne: {
+    id: number;
+    image: string;
+    description: string;
+    description1: string;
+    price: string;
+    description2: string;
+    price2: string;
+    allergens: string[];
+  }[];
+};
+
 import NavCarta from '../components/NavCarta.astro';
 import '../styles/menuprin.css';
 import '../styles/carrusel.css';
 
 const categories = Object.keys(productsData);
-let selectedCategory = categories[0];
+let selectedCategory: keyof ProductsData = categories[0] as keyof ProductsData;
 ---
 
 <html lang="es">
@@ -22,8 +52,8 @@ let selectedCategory = categories[0];
       
       <div class="carousel-container">
         <button class="carousel-button left" aria-label="Previous">&#9664;</button>
-        <div class="carousel">
-          {productsData[selectedCategory].map(product => (
+       <div class="carousel">
+          {productsData[selectedCategory].map((product: { image: string, description: string }) => (
             <div class="carousel-item">
               <img src={product.image} alt={product.description} class="carousel-image" />
               <h3 class="carousel-title">{product.description}</h3>
@@ -31,11 +61,11 @@ let selectedCategory = categories[0];
           ))}
         </div>
         <button class="carousel-button right" aria-label="Next">&#9654;</button>
-      </div>
+      </div> 
     </div>
     
     <script type="module">
-      import { productsData } from '../data/products.js';
+    
       document.addEventListener('DOMContentLoaded', () => {
         const categoryLinks = document.querySelectorAll('.category-link');
         const carousel = document.querySelector('.carousel');
@@ -48,12 +78,6 @@ let selectedCategory = categories[0];
             const category = link.getAttribute('href').substring(1);
             const products = productsData[category];
 
-            carousel.innerHTML = products.map(product => `
-              <div class="carousel-item">
-                <img src="${product.image}" alt="${product.description}" class="carousel-image" />
-                <h3 class="carousel-title">${product.description}</h3>
-              </div>
-            `).join('');
           });
         });
 
