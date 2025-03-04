@@ -1,0 +1,68 @@
+---
+// Aquí puedes definir cualquier lógica si es necesario, pero para este caso no es necesario nada en el script.
+const images = [
+  "/nosotros1.jpg",
+  "/nosotros2.jpg",
+  "/nosotros3.jpg"
+];
+---
+
+<style>
+  .nosotros-container {
+    text-align: center;
+    padding: 40px;
+  }
+
+  .nosotros-container p {
+    font-size: 1.5rem; /* Tamaño del texto más grande */
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .carousel {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Espacio entre las imágenes */
+    margin: 40px 0;
+  }
+
+  .carousel img {
+    width: 500px; /* Tamaño de las imágenes */
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .button {
+    background-color: #ddd;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .button:hover {
+    background-color: #bbb;
+  }
+</style>
+
+<div class="nosotros-container">
+  <p><strong>
+    Café Bar José Vela es un establecimiento de gastronomía tradicional en Córdoba.
+    Su larga trayectoria en el sector hacen de este lugar un punto de encuentro donde degustar
+    las mejores tapas y platos de la cocina tradicional cordobesa.
+  </strong></p>
+
+  <div class="carousel">
+    <img src={images[0]} alt="Nosotros 1" />
+    <img src={images[1]} alt="Nosotros 2" />
+    <img src={images[2]} alt="Nosotros 3" />
+  </div>
+
+  <p><strong>Llevamos ya más de 25 años a tu servicio</strong></p>
+  <p>
+    <strong>Gracias a vosotros: CLIENTES Y AMIGOS, hemos cumplido 25 años de servicio y esperamos cumplir otros 25 más.</strong>
+  </p>
+</div>
+
+
