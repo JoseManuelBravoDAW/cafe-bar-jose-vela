@@ -31,6 +31,7 @@ const images = [
   .quienes-somos {
     text-align: center;
     padding: 2rem;
+    font-size: 1.5rem; /* Aumentamos el tamaño del texto */
   }
 
   h2 {
@@ -47,13 +48,14 @@ const images = [
   .imagenes {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    gap: 10px; /* Espacio entre las imágenes */
+    gap: 20px; /* Espacio entre las imágenes */
   }
 
   .imagenes img {
-    width: 30%; /* Mostrar 3 imágenes por vez, y ajustamos el tamaño para que quepan */
+    width: 25%; /* Mostrar 3 imágenes por vez, y ajustamos el tamaño para que quepan */
     flex-shrink: 0;
     object-fit: cover; /* Ajusta las imágenes para que no se deformen */
+    border-radius: 15px; /* Bordes redondeados */
   }
 
   .navegacion {
@@ -72,6 +74,7 @@ const images = [
     font-size: 2rem;
     cursor: pointer;
   }
+
 </style>
 
 <script>
