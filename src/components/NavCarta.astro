@@ -1,32 +1,53 @@
 ---
-const categories = ['Entrantes', 'Carnes', 'Pescado', 'Molletes', 'Postres', 'Alérgenos'];
-import '../styles/NavBar.css'; // Asegúrate de que la ruta sea correcta
+import { productsData } from '../data/products.js';
+const categories = Object.keys(productsData); // Get categories from the products data
 ---
 
 <nav class="navbar">
-  <button class="menu-toggle" aria-label="Toggle menu">
-    ☰
-  </button>
-  <ul class="categories">
-    {categories.map(category => (
-      <li id={category} class="category">
-        <a href={`#${category.toLowerCase()}`} class="category-link">{category}</a>
-      </li>
-    ))}
-  </ul>
+  {categories.map((category) => (
+    <button
+      class="category-link"
+      id={`category-${category}`}  
+    >
+      {category.charAt(0).toUpperCase() + category.slice(1)} 
+    </button>
+  ))}
 </nav>
 
-<script>
+<script type="module">
   document.addEventListener('DOMContentLoaded', () => {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const categories = document.querySelector('.categories');
-
-    if (menuToggle) {
-      menuToggle.addEventListener('click', () => {
-        if (categories) {
-          categories.classList.toggle('open');
-        }
+    const categoryButtons = document.querySelectorAll('.category-link');
+    
+    categoryButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const category = button.textContent.toLowerCase();
+        // Emit the custom event with the category as the detail
+        const event = new CustomEvent('categorySelect', {
+          detail: category,
+        });
+        document.dispatchEvent(event);
       });
-    }
+    });
   });
 </script>
+
+<style>
+  .navbar {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+  }
+
+  .category-link {
+    padding: 10px 20px;
+    background-color: #f5f5f5;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .category-link:hover {
+    background-color: #ddd;
+  }
+</style>
