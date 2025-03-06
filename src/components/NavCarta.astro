@@ -1,6 +1,7 @@
 ---
 import { productsData } from '../data/products.js';
 const categories = Object.keys(productsData); // Get categories from the products data
+import '../styles/NavBar.css';
 ---
 
 <nav class="navbar">
@@ -14,7 +15,7 @@ const categories = Object.keys(productsData); // Get categories from the product
   ))}
 </nav>
 
-<script type="module">
+<script type="module">npm
   document.addEventListener('DOMContentLoaded', () => {
     const categoryButtons = document.querySelectorAll('.category-link');
     
@@ -50,4 +51,5 @@ const categories = Object.keys(productsData); // Get categories from the product
   .category-link:hover {
     background-color: #ddd;
   }
+  
 </style>
