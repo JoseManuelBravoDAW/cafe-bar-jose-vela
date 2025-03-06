@@ -8,6 +8,7 @@ const eventos = [
 ---
 
 <div class="eventos-container">
+  <h1>EVENTOS</h1>
   <div class="grid-eventos">
     {eventos.map((evento) => (
       <div class="evento">
@@ -21,6 +22,10 @@ const eventos = [
 </div>
 
 <style>
+  h1 {
+    font-size: 3rem; /* Aumentamos el tamaño del título */
+    margin-bottom: 1rem;
+  }
   .eventos-container {
     text-align: center;
     padding: 40px;
