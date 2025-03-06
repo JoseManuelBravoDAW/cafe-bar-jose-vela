@@ -1,7 +1,10 @@
 ---
 import Carousel from '../components/Carousel.astro';
 import Footer from '../components/Footer.astro';
-import Resenas from "../components/Resenas.astro";
+import Resenas from '../components/Resenas.astro';
+import Quienessomos from '../components/Quienessomos.astro';
+import Eventos from '../components/Eventos.astro';
+import Nosotros from '../components/Nosotros.astro';
 import Formulario from '../components/Formulario.astro';
 import Titulo from '../components/Titulo.astro';
 import TopMenu from '../components/TopMenu.astro';
@@ -19,19 +22,26 @@ import Layout from '../layouts/Layout.astro';
 			<Titulo titulo="CAFÉ BAR JOSÉ VELA" />
 		</div>
 		<!-- Quienes somos -->
-		<div class="h-screen bg-once">
-			<Titulo titulo="QUIÉNES SOMOS" />
+		<div class="Quienessomos">
+			<Titulo titulo="¿Quiénes somos?" />
+			<Quienessomos/>
 			<!-- 
 				-->
 			</div>
-			<Carousel images={['/about01.jpg', '/about02.jpg']} />
-			<Carousel images={['/about03.jpg', '/fondo.jpg', '/about02.jpg']} />
 
+		<div class="Nosotros">
+				<Titulo titulo="Nosotros" />
+		    <Nosotros/>
+		<div class="Eventos">
+				<Titulo titulo="Eventos" />
+			<Eventos/>
 		<div class="resenas">
-			<Titulo titulo="Reseñas"/>
-				<Resenas />
-		</div>
+				<Titulo titulo="Reseñas" />
+		    <Resenas/>		
+
+			
 		<Formulario />
+
 	</main>
 	<footer>
 		<Footer />
