@@ -5,6 +5,7 @@ import Resenas from '../components/Resenas.astro';
 import Quienessomos from '../components/Quienessomos.astro';
 import Eventos from '../components/Eventos.astro';
 import Nosotros from '../components/Nosotros.astro';
+import Formulario from '../components/Formulario.astro';
 import Titulo from '../components/Titulo.astro';
 import TopMenu from '../components/TopMenu.astro';
 import Layout from '../layouts/Layout.astro';
@@ -27,6 +28,7 @@ import Layout from '../layouts/Layout.astro';
 			<!-- 
 				-->
 			</div>
+
 		<div class="Nosotros">
 				<Titulo titulo="Nosotros" />
 		    <Nosotros/>
@@ -36,8 +38,14 @@ import Layout from '../layouts/Layout.astro';
 		<div class="resenas">
 				<Titulo titulo="Reseñas" />
 		    <Resenas/>		
+
+			
+		<Formulario />
+
 	</main>
 	<footer>
 		<Footer />
 	</footer>
 </Layout>
+
+
