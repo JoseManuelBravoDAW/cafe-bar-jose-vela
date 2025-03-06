@@ -1,0 +1,122 @@
+---
+const images = [
+  "/quienessomos1.jpg",
+  "/quienessomos2.jpg",
+  "/quienessomos3.jpg",
+  "/quienessomos4.jpg",
+  "/quienessomos5.jpg",
+  "/quienessomos6.jpg",
+  "/quienessomos7.jpg",
+  "/quienessomos8.jpg"
+];
+---
+
+<section class="quienes-somos">
+  <p><strong>Café Bar José Vela es un establecimiento de gastronomía tradicional en Córdoba. Su larga trayectoria en el sector hacen de este lugar un punto de encuentro donde degustar las mejores tapas y platos de la cocina tradicional cordobesa.</strong></p>
+
+  <section class="carrusel">
+    <div class="imagenes">
+      {images.map((image, index) => (
+        <img src={image} alt={`Imagen ${index + 1}`} />
+      ))}
+    </div>
+    <div class="navegacion">
+      <button class="anterior">←</button>
+      <button class="siguiente">→</button>
+    </div>
+  </section>
+</section>
+
+<style>
+  .quienes-somos {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.5rem; /* Aumentamos el tamaño del texto */
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .carrusel {
+    position: relative;
+    overflow: hidden;
+    margin-top: 2rem;
+  }
+
+  .imagenes {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    gap: 20px; /* Espacio entre las imágenes */
+  }
+
+  .imagenes img {
+    width: 25%; /* Mostrar 3 imágenes por vez, y ajustamos el tamaño para que quepan */
+    flex-shrink: 0;
+    object-fit: cover; /* Ajusta las imágenes para que no se deformen */
+    border-radius: 15px; /* Bordes redondeados */
+  }
+
+  .navegacion {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+  }
+
+  .navegacion button {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+
+</style>
+
+<script>
+  const images = [
+    "/quienessomos1.jpg",
+    "/quienessomos2.jpg",
+    "/quienessomos3.jpg",
+    "/quienessomos4.jpg",
+    "/quienessomos5.jpg",
+    "/quienessomos6.jpg",
+    "/quienessomos7.jpg",
+    "/quienessomos8.jpg"
+  ];
+  const carrusel = document.querySelector('.carrusel');
+  if (carrusel) {
+    const imagenes = carrusel.querySelector('.imagenes');
+    const anterior = carrusel.querySelector('.anterior');
+    const siguiente = carrusel.querySelector('.siguiente');
+    const totalImagenes = images.length; // Número total de imágenes (8)
+    const imagesPerPage = 3; // Mostrar 3 imágenes por vez
+    let indice = 0;
+
+    // Función para mover el carrusel a la imagen correcta
+    function moverCarrusel() {
+      if (imagenes) {
+        (imagenes as HTMLElement).style.transform = `translateX(-${indice * (100 / imagesPerPage)}%)`;
+      }
+    }
+
+    // Flecha anterior
+    anterior?.addEventListener('click', () => {
+      // Restamos imagesPerPage al índice, y si estamos en la primera imagen, volvemos a la última
+      indice = (indice > 0) ? indice - 1 : Math.floor(totalImagenes / imagesPerPage);
+      moverCarrusel();
+    });
+
+    // Flecha siguiente
+    siguiente?.addEventListener('click', () => {
+      // Sumamos imagesPerPage al índice, y si estamos en la última imagen, volvemos a la primera
+      indice = (indice < Math.floor(totalImagenes / imagesPerPage)) ? indice + 1 : 0;
+      moverCarrusel();
+    });
+  }
+</script>
+

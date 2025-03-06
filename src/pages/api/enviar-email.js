@@ -15,12 +15,12 @@ export const POST = async ({ request }) => {
     const email = formData.get('email');
     const message = formData.get('query');
 
-    console.log('Form Data:', { name, phone, email, message });
+    const people = formData.get('people');
+    const date = formData.get('date');
+    const type = formData.get('type');
 
-    if (!name || !phone || !email || !message) {
-      console.error('Missing form data');
-      return new Response('Missing form data', { status: 400 });
-    }
+    
+
 
     // Set up Nodemailer transport
     const transporter = nodemailer.createTransport({
@@ -31,13 +31,33 @@ export const POST = async ({ request }) => {
       },
     });
 
-    // Set email options
-    const mailOptions = {
-      from: email,
-      to: correo, // Your email address or the address where the email will be sent
-      subject: 'Formulario de contacto',
-      text: `Mensaje de: ${name} (Email: ${email})(Teléfono: ${phone})\n\n${message}`,
-    };
+    var mailOptions = {};
+
+    switch (type) {
+      case 'reserva':
+        var mailContent = `El cliente ${name} (Email: ${email})(Teléfono: ${phone}) ha solicitado reservar mesa para ${people} personas en la fecha ${date}`
+        if (message) {
+          mailContent = mailContent + ` con el siguiente mensaje:\n\n${message}`;
+        }
+        
+        mailOptions = {
+          from: email,
+          to: correo, // Your email address or the address where the email will be sent
+          subject: 'Reserva',
+          text: mailContent,
+        };
+        break;
+    
+      case 'contacto':
+        mailOptions = {
+          from: email,
+          to: correo, // Your email address or the address where the email will be sent
+          subject: 'Formulario de contacto',
+          text: `Mensaje de: ${name} (Email: ${email})(Teléfono: ${phone})\n\n${message}`,
+        };
+        break;
+    }
+
 
     await transporter.sendMail(mailOptions);
     console.log('Email sent successfully!');
