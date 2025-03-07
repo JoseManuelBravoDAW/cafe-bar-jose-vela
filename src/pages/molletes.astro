@@ -1,0 +1,247 @@
+---
+import { productsData } from '../data/products.js';
+import NavCarta from '../components/NavCarta.astro';
+import Plato from '../components/Plato.astro';
+import '../styles/NavBar.css'; // Asegúrate de que la ruta sea correcta
+import CartaNav from '../components/CartaNav.astro';
+
+type Product = {
+  id: number;
+  image: string;
+  description: string;
+  description1: string;
+  price: string;
+  description2?: string;
+  price2?: string;
+  allergens?: string[];
+};
+
+type ProductsData = {
+  entrantes: Product[];
+  carne: Product[];
+  pescado: Product[];
+  molletes: Product[];
+};
+
+const selectedCategory: keyof ProductsData = 'molletes';
+
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menú de Molletes</title>
+</head>
+<body>
+  <CartaNav />
+
+  <div class="menu-container">
+    {productsData[selectedCategory].map(product => (
+      <div class="menu-item">
+        <Plato 
+          product={{
+            id: product.id,
+            image: product.image,
+            description: product.description,
+            description1: product.description1,
+            price: product.price,
+            description2: product.description2,
+            price2: product.price2,
+            allergens: product.allergens
+          }}
+        />
+      </div>
+    ))}
+  </div>
+</body>
+</html>
+
+<style>
+  .menu-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .menu-item {
+    flex: 1 1 22%; /* Tamaño fijo para 4 columnas */
+    max-width: 22%;
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 1200px) {
+    .menu-item {
+      flex: 1 1 30%; /* 3 columnas en pantallas medianas */
+      max-width: 30%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .menu-item {
+      flex: 1 1 100%; /* 1 columna en pantallas pequeñas */
+      max-width: 100%;
+    }
+  }
+
+  .plato-imagen {
+    width: 100%;
+    height: 200px; /* Altura fija para todas las imágenes */
+    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsión */
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+
+  .plato {
+    border: 1px solid #ddd;
+    padding: 16px;
+    margin: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: auto; /* Ajusta la altura automáticamente */
+    font-family: 'Montserrat', sans-serif; /* Aplica la fuente Montserrat */
+    overflow: hidden; /* Evita que el contenido sobresalga */
+  }
+
+  .plato:hover {
+    transform: scale(1.05); /* Efecto de escala al pasar el mouse */
+  }
+
+  .plato-imagen-container {
+    width: 100%;
+    height: 200px; /* Altura fija para el contenedor de la imagen */
+    overflow: hidden; /* Oculta cualquier contenido que se desborde */
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+
+  .plato-imagen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsión */
+    border-radius: 8px;
+  }
+
+  .details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .plato-nombre {
+    font-size: 1.5em;
+    margin: 8px 0;
+  }
+
+  .plato-descripcion {
+    font-size: 1em;
+    color: #555;
+    text-align: center; /* Centra el texto de las descripciones */
+    margin: 4px 0;
+  }
+
+  .plato-precio {
+    font-size: 1.2em;
+    color: #333;
+    margin: 4px 0;
+    text-align: center; /* Centra el texto de los precios */
+  }
+
+  .plato-alergenos {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0; /* Añade margen superior e inferior */
+    text-align: center; /* Centra el texto de los alérgenos */
+  }
+
+  .plato-alergenos li {
+    display: inline-block;
+    background: #eee;
+    padding: 4px 8px;
+    margin: 4px;
+    border-radius: 4px;
+  }
+
+  /* Estilos para pantallas pequeñas */
+  @media (max-width: 768px) {
+    .plato {
+      flex-direction: row; /* Cambia la dirección del flex a fila */
+      align-items: flex-start; /* Alinea los elementos al inicio */
+      height: auto; /* Ajusta la altura automáticamente */
+      padding: 8px; /* Reduce el padding */
+    }
+
+    .plato-imagen-container {
+      width: 50%; /* Ajusta el ancho del contenedor de la imagen */
+      height: 150px; /* Altura fija para la imagen en pantallas pequeñas */
+      margin-right: 1rem; /* Añade margen a la derecha */
+      margin-bottom: 0; /* Elimina el margen inferior */
+      position: relative;
+    }
+
+    .plato-imagen {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Asegura que la imagen cubra el área sin distorsión */
+    }
+
+    .details {
+      width: 50%; /* Ajusta el ancho del contenedor de detalles */
+      text-align: left; /* Alinea el texto a la izquierda */
+    }
+
+    .plato-nombre {
+      font-size: 1.2em; /* Reduce el tamaño de la fuente */
+    }
+
+    .plato-descripcion {
+      font-size: 0.9em; /* Reduce el tamaño de la fuente */
+    }
+
+    .plato-precio {
+      font-size: 1em; /* Reduce el tamaño de la fuente */
+    }
+
+    .plato-alergenos {
+      position: static; /* Elimina la posición absoluta */
+      transform: none; /* Elimina la transformación */
+      margin-top: 1rem; /* Añade margen superior */
+      text-align: center; /* Centra el texto de los alérgenos */
+      width: 100%; /* Asegura que ocupe todo el ancho */
+    }
+
+    .plato-alergenos li {
+      padding: 2px 4px; /* Reduce el padding */
+      margin: 2px; /* Reduce el margen */
+    }
+  }
+
+  /* Estilos para pantallas grandes */
+  @media (min-width: 769px) {
+    .plato {
+      flex-direction: column;
+      height: 600px; /* Altura fija para todos los contenedores en pantallas grandes */
+    }
+
+    .plato-imagen-container {
+      width: 100%;
+      height: 200px;
+      margin-right: 0;
+    }
+
+    .details {
+      width: 100%;
+      text-align: left;
+    }
+  }
+</style>

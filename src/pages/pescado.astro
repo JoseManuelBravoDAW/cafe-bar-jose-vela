@@ -1,11 +1,11 @@
 ---
-import { fetchProductsByCategory } from '../services/fetchProducts';
+import { productsData } from '../data/products.js';
 import NavCarta from '../components/NavCarta.astro';
 import Plato from '../components/Plato.astro';
 import '../styles/NavBar.css'; // Asegúrate de que la ruta sea correcta
+import CartaNav from '../components/CartaNav.astro';
 
-const category = 'entrantes'; // Cambia esta categoría según lo que necesites mostrar
-interface Product {
+type Product = {
   id: number;
   image: string;
   description: string;
@@ -14,10 +14,16 @@ interface Product {
   description2?: string;
   price2?: string;
   allergens?: string[];
-}
+};
 
-const products: Product[] = await fetchProductsByCategory(category);
-export const prerender = false;
+type ProductsData = {
+  entrantes: Product[];
+  carne: Product[];
+  pescado: Product[];
+};
+
+const selectedCategory: keyof ProductsData = 'pescado';
+
 ---
 
 <!DOCTYPE html>
@@ -25,13 +31,13 @@ export const prerender = false;
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Menú</title>
+  <title>Menú de Pescado</title>
 </head>
 <body>
-  <NavCarta />
+  <CartaNav />
 
   <div class="menu-container">
-    {products.map(product => (
+    {productsData[selectedCategory].map(product => (
       <div class="menu-item">
         <Plato 
           product={{

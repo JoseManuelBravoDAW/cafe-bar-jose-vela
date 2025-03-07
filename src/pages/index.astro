@@ -1,31 +1,51 @@
 ---
+import Carousel from '../components/Carousel.astro';
 import Footer from '../components/Footer.astro';
+import Resenas from '../components/Resenas.astro';
+import Quienessomos from '../components/Quienessomos.astro';
+import Eventos from '../components/Eventos.astro';
+import Nosotros from '../components/Nosotros.astro';
+import Formulario from '../components/Formulario.astro';
+import Mapa from '../components/Mapa.astro';
 import Titulo from '../components/Titulo.astro';
 import TopMenu from '../components/TopMenu.astro';
 import Layout from '../layouts/Layout.astro';
-import CarruselMenu from '../components/CarruselMenu.astro';
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
 	<main>
 		<TopMenu />
-		
-		 <!-- Inserta el componente Menu aquí -->
 		<!-- Presentación -->
 		<div class="h-screen bg-cover bg-[url('/fondo.jpg')]">
 			<Titulo titulo="CAFÉ BAR JOSÉ VELA" />
 		</div>
 		<!-- Quienes somos -->
-		<div class="h-screen bg-once">
-			<Titulo titulo="QUIÉNES SOMOS" />
+		<div class="Quienessomos">
+			
+			<Quienessomos/>
+			<!-- 
+				-->
+			</div>
+
+		<div class="Nosotros">
+				
+		    <Nosotros/>
+		<div class="Eventos">
+				
+			<Eventos/>
+		<div class="resenas">
+				
+		    <Resenas/>		
+
+			
+		<div class="flex ">
+			<Formulario />
+			<Mapa />
 		</div>
-		<div>
-			<CarruselMenu />
-		</div>
-		<div class="h-screen bg-once">
-			<Titulo titulo="Carta" />
-		</div>
-		
+
 	</main>
 	<footer>
 		<Footer />

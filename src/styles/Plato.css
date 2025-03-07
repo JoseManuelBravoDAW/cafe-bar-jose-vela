@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 .platos-container {
   display: flex;
   flex-wrap: wrap;
@@ -11,18 +13,40 @@
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
-  width: calc(25% - 32px); /* 25% width minus margins for 4 columns */
-  box-sizing: border-box; /* Include padding and border in width */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: auto; /* Ajusta la altura automáticamente */
+  font-family: 'Montserrat', sans-serif; /* Aplica la fuente Montserrat */
+  overflow: hidden; /* Evita que el contenido sobresalga */
 }
 
 .plato:hover {
   transform: scale(1.05); /* Efecto de escala al pasar el mouse */
 }
 
+.plato-imagen-container {
+  width: 100%;
+  height: 200px; /* Altura fija para el contenedor de la imagen */
+  overflow: hidden; /* Oculta cualquier contenido que se desborde */
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
 .plato-imagen {
   width: 100%;
-  height: auto;
+  height: 100%; /* Altura fija para todas las imágenes */
+  object-fit: cover; /* Asegura que la imagen cubra el área sin distorsión */
   border-radius: 8px;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .plato-nombre {
@@ -33,17 +57,22 @@
 .plato-descripcion {
   font-size: 1em;
   color: #555;
+  text-align: center; /* Centra el texto de las descripciones */
+  margin: 4px 0;
 }
 
 .plato-precio, .plato-precio-mitad {
   font-size: 1.2em;
   color: #333;
-  margin: 8px 0;
+  margin: 4px 0;
+  text-align: center; /* Centra el texto de los precios */
 }
 
 .plato-alergenos {
   list-style: none;
   padding: 0;
+  margin: 1rem 0; /* Añade margen superior e inferior */
+  text-align: center; /* Centra el texto de los alérgenos */
 }
 
 .plato-alergenos li {
@@ -57,10 +86,72 @@
 /* Mobile Styles - Keep these for smaller screens */
 @media (max-width: 768px) {
   .plato {
-    width: 100%; /* Full width on mobile */
-    margin: 16px 0; /* Adjust margins for mobile */
+    flex-direction: row; /* Cambia la dirección del flex a fila */
+    align-items: flex-start; /* Alinea los elementos al inicio */
+    height: auto; /* Ajusta la altura automáticamente */
+    padding: 8px; /* Reduce el padding */
   }
+
+  .plato-imagen-container {
+    width: 50%; /* Ajusta el ancho del contenedor de la imagen */
+    height: 150px; /* Altura fija para la imagen en pantallas pequeñas */
+    margin-right: 1rem; /* Añade margen a la derecha */
+    margin-bottom: 0; /* Elimina el margen inferior */
+    position: relative;
+  }
+
   .plato-imagen {
-    margin-bottom: 1rem; /* Space below image on mobile */
+    width: 100%;
+    height: 100%; /* Altura fija para todas las imágenes */
+    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsión */
+  }
+
+  .details {
+    width: 50%; /* Ajusta el ancho del contenedor de detalles */
+    text-align: left; /* Alinea el texto a la izquierda */
+  }
+
+  .plato-nombre {
+    font-size: 1.2em; /* Reduce el tamaño de la fuente */
+  }
+
+  .plato-descripcion {
+    font-size: 0.9em; /* Reduce el tamaño de la fuente */
+  }
+
+  .plato-precio {
+    font-size: 1em; /* Reduce el tamaño de la fuente */
+  }
+
+  .plato-alergenos {
+    position: static; /* Elimina la posición absoluta */
+    transform: none; /* Elimina la transformación */
+    margin-top: 1rem; /* Añade margen superior */
+    text-align: center; /* Centra el texto de los alérgenos */
+    width: 100%; /* Asegura que ocupe todo el ancho */
+  }
+
+  .plato-alergenos li {
+    padding: 2px 4px; /* Reduce el padding */
+    margin: 2px; /* Reduce el margen */
+  }
+}
+
+/* Estilos para pantallas grandes */
+@media (min-width: 769px) {
+  .plato {
+    flex-direction: column;
+    height: 600px; /* Altura fija para todos los contenedores en pantallas grandes */
+  }
+
+  .plato-imagen-container {
+    width: 100%;
+    height: 200px;
+    margin-right: 0;
+  }
+
+  .details {
+    width: 100%;
+    text-align: left;
   }
 }

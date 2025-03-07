@@ -186,4 +186,27 @@ export const productsData = {
       allergens: ['gluten', 'egg'],	
     },
   ],
+  molletes: [
+    {
+      id: 11,
+      image: '/pisto1.jpg',
+      description: 'Pisto Casero',
+      description1: '1/2 Ración',
+      price: '4.00 €',
+      description2: 'Ración',
+      price2: '7.5 €',
+      allergens: ['gluten', 'egg'],	
+    },
+    {
+      id: 11,
+      image: '/pisto1.jpg',
+      description: 'Pisto Casero',
+      description1: '1/2 Ración',
+      price: '4.00 €',
+      description2: 'Ración',
+      price2: '7.5 €',
+      allergens: ['gluten', 'egg'],	
+    },
+  ],
+
 };

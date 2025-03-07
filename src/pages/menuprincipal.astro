@@ -44,8 +44,6 @@ let selectedCategory: keyof ProductsData = categories[0] as keyof ProductsData;
             <div class="carousel-item">
               <img src={product.image} alt={product.description} class="carousel-image" />
               <h3 class="carousel-title">{product.description}</h3>
-              <p>{product.description1}: {product.price}</p>
-              {product.price2 && <p>{product.description2}: {product.price2}</p>}
             </div>
           ))}
         </div>
@@ -99,8 +97,6 @@ let selectedCategory: keyof ProductsData = categories[0] as keyof ProductsData;
             <div class="carousel-item">
               <img src="${product.image}" alt="${product.description}" class="carousel-image" />
               <h3 class="carousel-title">${product.description}</h3>
-              <p>${product.description1}: ${product.price}</p>
-              ${product.price2 ? `<p>${product.description2}: ${product.price2}</p>` : ''}
             </div>
           `).join('');
 
