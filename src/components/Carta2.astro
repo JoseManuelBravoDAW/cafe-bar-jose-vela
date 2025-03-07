@@ -1,0 +1,35 @@
+---
+import { fetchProductsByCategory } from '../services/fetchProducts';
+import NavCarta from './NavCarta.astro';
+const category = 'entrantes'; // Cambia esta categoría según lo que necesites mostrar
+interface Product {
+  id: string;
+  image: string;
+  description: string;
+  price: string; // Cambiado a string
+  description2?: string;
+  price2?: string; // Cambiado a string
+}
+import '../styles/Menu.css'; // Asegúrate de que la ruta sea correctaS
+const products: Product[] = await fetchProductsByCategory(category);
+---
+
+<NavCarta />
+
+<div class="flex flex-wrap justify-center mx-4 my-4">
+  {products.map(product => (
+    <div class="w-full md:w-1/2 lg:w-1/4 p-2" id={product.id}>
+      <div class="border border-gray-300 rounded-lg p-4 bg-white text-center transition-transform transform hover:scale-105">
+        <img 
+          src={product.image} 
+          alt={product.description} 
+          class="w-full h-48 object-cover rounded-lg md:w-40 md:h-auto md:mr-4" 
+        />
+        <div class="md:flex md:flex-col md:justify-center md:text-left">
+          <p class="mt-2 md:mt-0">{product.description} - ${parseFloat(product.price).toFixed(2)}</p>
+          {product.description2 && product.price2 && <p class="mt-1">{product.description2} - ${parseFloat(product.price2).toFixed(2)}</p>}
+        </div>
+      </div>
+    </div>
+  ))}
+</div>

@@ -1,0 +1,72 @@
+<nav class="navbar">
+    <a class="category-link" href="/entrantes">Entrantes</a>
+    <a class="category-link" href="/carne">Carnes</a>
+    <a class="category-link" href="/pescado">Pescado</a>
+    <a class="category-link" href="/molletes">Molletes</a>
+</nav>
+
+<script type="module">
+    document.addEventListener('DOMContentLoaded', () => {
+        const categoryLinks = document.querySelectorAll('.category-link');
+        const currentPath = window.location.pathname; // Detecta la URL actual
+
+        categoryLinks.forEach((link) => {
+            if (link.getAttribute('href') === currentPath) {
+                link.classList.add('active'); // Activa el enlace correcto
+            } else {
+                link.classList.remove('active'); // Elimina la clase de los demás
+            }
+        });
+    });
+</script>
+
+<style>
+/* NAVBAR */
+.navbar {
+    display: flex;
+    flex-direction: row; /* Cambia la dirección del flex a fila */
+    align-items: center;
+    justify-content: center; /* Centra los elementos horizontalmente */
+    padding: 20px;
+    background-color: #f6ebeb;
+    gap: 15px;
+}
+
+/* BOTONES */
+.category-link {
+    padding: 10px 20px;
+    border-radius: 12px;
+    border: 1px solid #d8c4c4;
+    background-color: transparent;
+    text-decoration: none;
+    font-size: 16px;
+    color: #5a4747;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    min-width: 130px; /* Asegura un tamaño uniforme */
+}
+
+/* HOVER */
+.category-link:hover {
+    background-color: #e8d7d7;
+}
+
+/* BOTÓN ACTIVO */
+.category-link.active {
+    background-color: white;
+    font-weight: 600;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+/* RESPONSIVIDAD: En móviles se apilan en fila */
+@media (max-width: 768px) {
+    .navbar {
+        flex-wrap: wrap; /* Permite que los elementos se acomoden según el tamaño */
+    }
+    
+    .category-link {
+        width: auto;
+    }
+}
+</style>

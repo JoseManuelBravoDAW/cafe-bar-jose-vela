@@ -1,0 +1,58 @@
+{
+  "entrantes": [
+    {
+      "id": 1,
+      "image": "/public/tortilla.jpg",
+      "description": "Tortilla",
+      "price": "$5",
+      "description2": "1/2 Racion",
+      "price2": "10€",
+      "allergens": ["gluten", "egg"]
+    },
+    {
+      "id": 2,
+      "image": "/public/queso.jpg",
+      "description": "Queso",
+      "price": "$6",
+      "description2": "Entrante de temporada",
+      "price2": "12€",
+      "allergens": ["gluten", "egg"]
+    },
+    {
+      "id": 4,
+      "image": "/public/queso.jpg",
+      "description": "Queso",
+      "price": "$6",
+      "description2": "Entrante de temporada",
+      "price2": "12€",
+      "allergens": ["gluten", "egg"]
+    },
+    {
+      "id": 5,
+      "image": "/public/queso.jpg",
+      "description": "Queso",
+      "price": "$6",
+      "description2": "Entrante de temporada",
+      "price2": "12€",
+      "allergens": ["gluten", "egg"]
+    }
+  ],
+  "pescado": [
+    {
+      "id": 3,
+      "image": "/public/url-pescado-1.jpg",
+      "description": "Pescado 1",
+      "price": "$12",
+      "description2": "Pescado a la parrilla",
+      "price2": "20€"
+    },
+    {
+      "id": 4,
+      "image": "/public/url-pescado-2.jpg",
+      "description": "Pescado 2",
+      "price": "$15",
+      "description2": "Pescado al horno",
+      "price2": "25€"
+    }
+  ]
+}

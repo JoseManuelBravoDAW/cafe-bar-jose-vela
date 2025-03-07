@@ -1,0 +1,58 @@
+.menu-container {
+  text-align: center;
+  padding: 20px;
+  background-color: #f6eceb; /* Color de fondo igual al de la navbar */
+  min-height: 80vh; /* Ajusta la altura mínima del contenedor */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.menu-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.menu-description {
+  font-size: 1.2rem;
+  color: gray;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.category-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}          
+.category-button {
+  padding: 10px;
+  border: 1px solid black;
+  background-color: transparent;
+  cursor: pointer;
+}
+.category-button.active {
+  background-color: white;
+  color: black;
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 768px) {
+  .menu-title {
+    font-size: 20px;
+  }
+  .menu-description {
+    font-size: 14px;
+  }
+  .carousel-item {
+    width: 80vw; /* Ajusta el ancho del contenedor para pantallas pequeñas */
+    height: 40vh; /* Ajusta la altura del contenedor para pantallas pequeñas */
+    margin: 0 5px;
+    padding: 15px; /* Ajusta el padding para pantallas pequeñas */
+  }
+  .carousel-image {
+    height: 100%; /* Ajusta la altura de la imagen para pantallas pequeñas */
+  }
+  .carousel-title {
+    font-size: 16px;
+  }
+}

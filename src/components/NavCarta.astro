@@ -1,0 +1,93 @@
+---
+import { productsData } from '../data/products.js';
+const categories = Object.keys(productsData); // Get categories from the products data
+
+---
+
+<nav class="navbar">
+  {categories.map((category) => (
+    <button
+      class="category-link"
+      id={`category-${category}`}  
+    >
+      {category.charAt(0).toUpperCase() + category.slice(1)} 
+    </button>
+  ))}
+</nav>
+
+<script type="module">
+  document.addEventListener('DOMContentLoaded', () => {
+    const categoryButtons = document.querySelectorAll('.category-link');
+    
+    categoryButtons.forEach((button) => {
+      button.addEventListener('click', (event) => {
+        categoryButtons.forEach((button) => button.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+        
+        const category = button.textContent.toLowerCase();
+        // Emit the custom event with the category as the detail
+        event = new CustomEvent('categorySelect', {
+          detail: category,
+        });
+        document.dispatchEvent(event);
+      });
+    });
+  });
+</script>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    flex-direction: row; /* Cambia la dirección del flex a fila */
+    align-items: center;
+    justify-content: center; /* Centra los elementos horizontalmente */
+    padding: 20px;
+    background-color: #f6ebeb;
+    gap: 15px;
+}
+
+/* BOTONES */
+.category-link {
+    padding: 10px 20px;
+    border-radius: 12px;
+    border: 1px solid #d8c4c4;
+    background-color: transparent;
+    text-decoration: none;
+    font-size: 16px;
+    color: #5a4747;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    min-width: 130px; /* Asegura un tamaño uniforme */
+}
+
+/* HOVER */
+.category-link:hover {
+    background-color: #e8d7d7;
+}
+
+/* BOTÓN ACTIVO */
+.category-link.active {
+    background-color: white;
+    font-weight: 600;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+/* RESPONSIVIDAD: En móviles se apilan en fila */
+@media (max-width: 768px) {
+    .navbar {
+        flex-wrap: wrap; /* Permite que los elementos se acomoden según el tamaño */
+    }
+    
+    .category-link {
+        width: auto;
+    }
+}
+</style>
