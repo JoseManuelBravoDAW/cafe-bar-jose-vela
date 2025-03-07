@@ -1,9 +1,8 @@
 ---
 import { productsData } from '../data/products.js';
-import NavCarta from '../components/NavCarta.astro';
+import CartaNav from '../components/CartaNav.astro';
 import Plato from '../components/Plato.astro';
 import '../styles/NavBar.css'; // Asegúrate de que la ruta sea correcta
-import CartaNav from '../components/CartaNav.astro';
 
 type Product = {
   id: number;
@@ -20,6 +19,7 @@ type ProductsData = {
   entrantes: Product[];
   carne: Product[];
   pescado: Product[];
+    molletes: Product[];
 };
 
 const selectedCategory: keyof ProductsData = 'carne';
@@ -34,7 +34,7 @@ const selectedCategory: keyof ProductsData = 'carne';
   <title>Menú de Carne</title>
 </head>
 <body>
-  <CartaNav />
+  <CartaNav/>
 
   <div class="menu-container">
     {productsData[selectedCategory].map(product => (

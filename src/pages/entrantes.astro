@@ -1,6 +1,5 @@
 ---
 import { productsData } from '../data/products.js';
-import NavCarta from '../components/NavCarta.astro';
 import Plato from '../components/Plato.astro';
 import '../styles/NavBar.css'; // Asegúrate de que la ruta sea correcta
 import CartaNav from '../components/CartaNav.astro';
@@ -20,6 +19,7 @@ type ProductsData = {
   entrantes: Product[];
   carne: Product[];
   pescado: Product[];
+  molletes: Product[];
 };
 
 const categories = Object.keys(productsData);

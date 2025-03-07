@@ -1,7 +1,7 @@
 ---
 import { productsData } from '../data/products.js';
 const categories = Object.keys(productsData); // Get categories from the products data
-import '../styles/NavBar.css';
+
 ---
 
 <nav class="navbar">
@@ -20,10 +20,13 @@ import '../styles/NavBar.css';
     const categoryButtons = document.querySelectorAll('.category-link');
     
     categoryButtons.forEach((button) => {
-      button.addEventListener('click', () => {
+      button.addEventListener('click', (event) => {
+        categoryButtons.forEach((button) => button.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+        
         const category = button.textContent.toLowerCase();
         // Emit the custom event with the category as the detail
-        const event = new CustomEvent('categorySelect', {
+        event = new CustomEvent('categorySelect', {
           detail: category,
         });
         document.dispatchEvent(event);
@@ -33,23 +36,58 @@ import '../styles/NavBar.css';
 </script>
 
 <style>
-  .navbar {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* NAVBAR */
+.navbar {
     display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin: 20px 0;
-  }
+    flex-direction: row; /* Cambia la dirección del flex a fila */
+    align-items: center;
+    justify-content: center; /* Centra los elementos horizontalmente */
+    padding: 20px;
+    background-color: #f6ebeb;
+    gap: 15px;
+}
 
-  .category-link {
+/* BOTONES */
+.category-link {
     padding: 10px 20px;
-    background-color: #f5f5f5;
-    border: none;
-    cursor: pointer;
+    border-radius: 12px;
+    border: 1px solid #d8c4c4;
+    background-color: transparent;
+    text-decoration: none;
     font-size: 16px;
-  }
+    color: #5a4747;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    min-width: 130px; /* Asegura un tamaño uniforme */
+}
 
-  .category-link:hover {
-    background-color: #ddd;
-  }
-  
+/* HOVER */
+.category-link:hover {
+    background-color: #e8d7d7;
+}
+
+/* BOTÓN ACTIVO */
+.category-link.active {
+    background-color: white;
+    font-weight: 600;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+/* RESPONSIVIDAD: En móviles se apilan en fila */
+@media (max-width: 768px) {
+    .navbar {
+        flex-wrap: wrap; /* Permite que los elementos se acomoden según el tamaño */
+    }
+    
+    .category-link {
+        width: auto;
+    }
+}
 </style>
