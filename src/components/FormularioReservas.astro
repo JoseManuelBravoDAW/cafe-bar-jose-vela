@@ -1,8 +1,8 @@
 ---
 ---
 <form id="contact-form" method="post" class="max-w-lg mx-auto p-6">
-    <h2 class="text-2xl font-bold mb-6 text-gray-800">Contacto</h2>
-    <input type="hidden" id="type" name="type" value="contacto">
+    <h2 class="text-2xl font-bold mb-6 text-gray-800">Reservas</h2>
+    <input type="hidden" id="type" name="type" value="reserva">
     <div class="mb-4">
         <label for="name" class="block text-gray-700 font-bold mb-2">Nombre</label>
         <input type="text" id="name" name="name" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-uno" required>
@@ -15,9 +15,19 @@
         <label for="email" class="block text-gray-700 font-bold mb-2">Email</label>
         <input type="email" id="email" name="email" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-uno" required>
     </div>
+    <div class="mb-4 flex space-x-4">
+        <div class="w-1/2">
+            <label for="people" class="block text-gray-700 font-bold mb-2">Personas</label>
+            <input type="number" id="people" name="people" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-uno" min="1" required>
+        </div>
+        <div class="w-1/2">
+            <label for="date" class="block text-gray-700 font-bold mb-2">Fecha</label>
+            <input type="datetime-local" id="date" name="date" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-uno" required>
+        </div>
+    </div>
     <div class="mb-4">
         <label for="query" class="block text-gray-700 font-bold mb-2">Consulta</label>
-        <textarea id="query" name="query" rows="4" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-uno" required></textarea>
+        <textarea id="query" name="query" rows="4" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-uno"></textarea>
     </div>
     <div class="text-center">
         <button type="submit" class="px-6 py-2 cursor-pointer bg-cinco text-white font-bold rounded-lg hover:bg-dos focus:outline-none focus:ring-2 focus:ring-uno">Enviar</button>
@@ -43,10 +53,10 @@
 
             if (statusElement) {
                 if (response.ok) {
-                    statusElement.textContent = 'Tu consulta ha sido enviada correctamente. Nos pondremos en contacto contigo lo antes posible. ¡Gracias!';
+                    statusElement.textContent = 'La información de tu reserva se ha enviado correctamente. Nos pondremos en contacto contigo para confirmarla lo antes posible. ¡Gracias!';
                     statusElement.style.color = 'green';
                 } else {
-                    statusElement.textContent = 'Se ha producido un error al enviar tu consulta.';
+                    statusElement.textContent = 'Se ha producido un error al realizar tu reserva.';
                     statusElement.style.color = 'red';
                 }
             }
