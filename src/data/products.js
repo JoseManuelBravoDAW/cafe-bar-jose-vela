@@ -9,7 +9,7 @@ export const productsData = {
       price: '5.5 €',
       description2: 'Ración',
       price2: '9.5 €',
-      allergens: ['gluten', 'egg'],	
+      allergens: ['Lacteo'],
     },
     {
       id: 2,
@@ -19,7 +19,7 @@ export const productsData = {
       price: '5.5 €',
       description2: 'Ración',
       price2: '9.5 €',
-      allergens: ['gluten', 'egg'],	
+      allergens: [],
     },
     {
       id: 3,
@@ -29,7 +29,7 @@ export const productsData = {
       price: '-------',
       description2: 'Ración',
       price2: '6 €',
-      allergens: ['gluten', 'egg'],	
+      allergens: ['Mostaza'],
     },
     {
       id: 4,
@@ -39,7 +39,7 @@ export const productsData = {
       price: '4.00 €',
       description2: 'Ración',
       price2: '7 €',
-      allergens: ['gluten', 'egg'],	
+      allergens: ['Huevo', 'Pescado', 'Lacteo', 'Sufitos'],
     },
     {
       id: 5,
@@ -49,7 +49,7 @@ export const productsData = {
       price: '4.00 €',
       description2: 'Ración',
       price2: '7 €',
-      allergens: ['gluten', 'egg'],	
+      allergens: ['Huevos'],
     },
     {
       id: 6,
@@ -59,7 +59,7 @@ export const productsData = {
       price: '4.00 €',
       description2: 'Ración',
       price2: '7 €',
-      allergens: ['gluten', 'egg'],	
+      allergens: ['Gluten']
     },
     {
       id: 7,
@@ -69,7 +69,7 @@ export const productsData = {
       price: '--- €',
       description2: 'Ración',
       price2: '7.5 €',
-      allergens: ['gluten', 'egg'],	
+      allergens: ['Marisco', 'Huevos'],
     },
     {
       id: 8,
@@ -79,7 +79,7 @@ export const productsData = {
       price: '4.50 €',
       description2: 'Ración',
       price2: '7.50 €',
-      allergens: ['gluten', 'egg'],	
+      allergens: [],
     },
     {
       id: 9,
@@ -89,7 +89,7 @@ export const productsData = {
       price: '------',
       description2: 'Ración',
       price2: '9.50 €',
-      allergens: ['gluten', 'egg'],	
+      allergens: ['Gluten', 'Sufitos'],
     },
     {
       id: 10,
@@ -99,7 +99,7 @@ export const productsData = {
       price: '4.00 €',
       description2: 'Ración',
       price2: '7 €',
-      allergens: ['gluten', 'egg'],	
+      allergens: ['Gluten', 'Huevos', 'Sufitos'],
     },
     {
       id: 11,
@@ -109,7 +109,7 @@ export const productsData = {
       price: '4.00 €',
       description2: 'Ración',
       price2: '7.5 €',
-      allergens: ['gluten', 'egg'],	
+      allergens: [],
     },
     {
       id: 12,
@@ -119,7 +119,7 @@ export const productsData = {
       price: '2.00 €',
       description2: '',
       price2: '',
-      allergens: ['gluten', 'egg'],	
+      allergens: ['Gluten', 'Marisco'],
     },
   ],
   carne: [
@@ -131,7 +131,7 @@ export const productsData = {
       price: '-----',
       description2: 'Ración',
       price2: '12 €',
-      allergens: ['gluten', 'egg'],
+      allergens: [],
     },
     {
       id: 2,
@@ -141,7 +141,7 @@ export const productsData = {
       price: '-------',
       description2: 'Ración',
       price2: '10 €',
-      allergens: ['gluten', 'egg'],
+      allergens: [],
     },
     {
       id: 3,
@@ -151,7 +151,7 @@ export const productsData = {
       price: '--------',
       description2: 'Ración',
       price2: '8.00 €',
-      allergens: ['gluten', 'egg'],	
+      allergens: ['Gluten', 'Huevos'],
     },
     {
       id: 4,
@@ -161,7 +161,7 @@ export const productsData = {
       price: '------',
       description2: 'Ración',
       price2: '8.00 €',
-      allergens: ['gluten', 'egg'],	
+      allergens: ['Gluten', 'Huevos', 'Sufitos'],
     },
     {
       id: 5,
@@ -171,7 +171,7 @@ export const productsData = {
       price: '--------',
       description2: 'Ración',
       price2: '8.00 €',
-      allergens: ['gluten', 'egg'],	
+      allergens: ['Gluten', 'Huevos', 'Sufitos'],
     },
     {
       id: 6,
@@ -181,7 +181,7 @@ export const productsData = {
       price: '4.5 €',
       description2: 'Ración',
       price2: '8.00 €',
-      allergens: ['gluten', 'egg'],	
+      allergens: ['Gluten', 'Huevos', 'Sufitos'],
     },
   ],
   pescado: [
@@ -193,7 +193,7 @@ export const productsData = {
       price: '6.50 €',
       description2: 'Ración',
       price2: '12.00 €',
-      allergens: ['gluten', 'egg'],	
+      allergens: ['Moluscos'],
     },
     {
       id: 2,
@@ -203,7 +203,7 @@ export const productsData = {
       price: '4.50 €',
       description2: 'Ración',
       price2: '8.5 €',
-      allergens: ['Marisco'],	
+      allergens: ['Marisco', 'Pescado', 'Molusco'],
     },
     {
       id: 3,
@@ -213,7 +213,7 @@ export const productsData = {
       price: '6.50 €',
       description2: 'Ración',
       price2: '8.00 €',
-      allergens: ['Pesacado', 'Huevos'],	
+      allergens: ['Gluten', 'Moluscos'],
     },
     {
       id: 11,
@@ -223,7 +223,7 @@ export const productsData = {
       price: '4.50 €',
       description2: 'Ración',
       price2: '8.5 €',
-      allergens: ['gluten', 'egg'],	
+      allergens: ['Gluten', 'Pescado'],
     },
   ],
   molletes: [
@@ -232,10 +232,9 @@ export const productsData = {
       image: '/mollete.jpg',
       description: 'Molletes:',
       description1: 'Serranito, Jamon de Bodega, Anchoa, Queso Obeja, Palometa, Salchichon, Atún con tomante, Jamon York y Queso',
-      description2: 'Unidad',
+      description2: 'Unidad, Preguntar Alergenos',
       price2: '3.50 €',
-      allergens: ['gluten', 'egg'],	
+      allergens: ['Pescado', 'Gluten'],
     },
   ],
-
 };
