@@ -19,10 +19,13 @@ export const POST = async ({ request }) => {
     const date = formData.get('date');
     const type = formData.get('type');
 
-    
+    // Input oculto para evitar spam
+    const inputOculto = formData.get('inputOculto');
+    if (inputOculto !== '') {
+      console.log('Spam detected!');
+      return new Response('Failed to send email.', { status: 500 });
+    }
 
-
-    // Set up Nodemailer transport
     const transporter = nodemailer.createTransport({
       service: tipoCorreo, 
       auth: {
@@ -42,7 +45,7 @@ export const POST = async ({ request }) => {
         
         mailOptions = {
           from: email,
-          to: correo, // Your email address or the address where the email will be sent
+          to: correo,
           subject: 'Reserva',
           text: mailContent,
         };
@@ -51,7 +54,7 @@ export const POST = async ({ request }) => {
       case 'contacto':
         mailOptions = {
           from: email,
-          to: correo, // Your email address or the address where the email will be sent
+          to: correo,
           subject: 'Formulario de contacto',
           text: `Mensaje de: ${name} (Email: ${email})(Teléfono: ${phone})\n\n${message}`,
         };
