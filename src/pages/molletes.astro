@@ -1,8 +1,10 @@
 ---
 import { productsData } from '../data/products.js';
 import Plato from '../components/Plato.astro';
-import '../styles/NavBar.css'; // Asegúrate de que la ruta sea correcta
+
 import CartaNav from '../components/CartaNav.astro';
+import Layout from '../layouts/Layout.astro';
+import TopMenu from '../components/TopMenu.astro';
 
 type Product = {
   id: number;
@@ -27,14 +29,9 @@ const selectedCategory: keyof ProductsData = 'molletes';
 
 ---
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Menú</title>
-</head>
-<body>
+<Layout >
+  <TopMenu />
+  <div class="mt-[89px]"></div>
   <CartaNav />
 
   <div class="menu-container">
@@ -115,8 +112,7 @@ const selectedCategory: keyof ProductsData = 'molletes';
       updateMenu(selectedCategory);
     });
   </script>
-</body>
-</html>
+</Layout>
 
 <style>
   .menu-container {
