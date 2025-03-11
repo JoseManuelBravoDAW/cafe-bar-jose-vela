@@ -1,13 +1,77 @@
-<nav class="flex justify-between items-center px-24 py-8 w-full fixed top-0 left-0 right-0 bg-uno opacity-75 z-1">
-    <ul class="flex gap-x-8 z-1">
-        <li><a href="/#quienessomos" class="text-white font-bold z-1">Quienes Somos</a></li>
-        <li><a href="/#menu" class="text-white font-bold z-1">Menú</a></li>
-        <li><a href="/#nosotros" class="text-white font-bold z-1">Nosotros</a></li>
-    </ul>
-    <div class="absolute left-1/2 transform -translate-x-1/2 text-white font-bold text-3xl z-1"><a href="/">José Vela</a></div>
-    <ul class="flex gap-x-8">
-        <li><a href="reservas" class="text-white font-bold z-1">Reservas</a></li>
-        <li><a href="/#eventos" class="text-white font-bold z-1">Eventos</a></li>
-        <li><a href="/#contacto" class="text-white font-bold z-1">Contacto</a></li>
-    </ul>
+<nav id="navbar" class="flex justify-between items-center px-6 py-8 w-full fixed top-0 left-0 right-0 bg-uno opacity-75 z-10 transition-opacity duration-1000">
+    
+    <div class="lg:hidden">
+        
+        <button id="menu-toggle" class="text-white font-bold z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+    </div>
+
+    
+    <div class="absolute left-1/2 transform -translate-x-1/2 text-white font-bold text-3xl z-1">
+        <a href="/">José Vela</a>
+    </div>
+
+    
+    <div class="hidden lg:flex w-full justify-between z-10">
+        <ul class="flex gap-x-8">
+            <li><a href="/#quienessomos" class="text-white font-bold">Quienes Somos</a></li>
+            <li><a href="/#menu" class="text-white font-bold">Menú</a></li>
+            <li><a href="/#nosotros" class="text-white font-bold">Nosotros</a></li>
+        </ul>
+        <ul class="flex gap-x-8">
+            <li><a href="reservas" class="text-white font-bold">Reservas</a></li>
+            <li><a href="/#eventos" class="text-white font-bold">Eventos</a></li>
+            <li><a href="/#contacto" class="text-white font-bold">Contacto</a></li>
+        </ul>
+    </div>
 </nav>
+
+
+<ul id="mobile-nav" class="flex flex-col items-center gap-y-4 bg-uno opacity-75 w-full fixed top-23.5 left-0 right-0 py-4 px-6 hidden lg:hidden z-20 transition-opacity duration-1000">
+    <li><a href="/#quienessomos" class="text-white font-bold z-1">Quienes Somos</a></li>
+    <li><a href="/#menu" class="text-white font-bold z-1">Menú</a></li>
+    <li><a href="/#nosotros" class="text-white font-bold z-1">Nosotros</a></li>
+    <li><a href="reservas" class="text-white font-bold z-1">Reservas</a></li>
+    <li><a href="/#eventos" class="text-white font-bold z-1">Eventos</a></li>
+    <li><a href="/#contacto" class="text-white font-bold z-1">Contacto</a></li>
+</ul>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileNav = document.getElementById('mobile-nav');
+
+        if (menuToggle && mobileNav) {
+            menuToggle.addEventListener('click', () => {
+                mobileNav.classList.toggle('hidden');
+            });
+        }
+
+
+        const navbar = document.getElementById('navbar');
+        
+        if (navbar && mobileNav){
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 500) {  
+                    navbar.classList.remove('opacity-75');
+                    navbar.classList.add('opacity-100');
+
+                    mobileNav.classList.remove('opacity-75');
+                    mobileNav.classList.add('opacity-100');
+                } else {
+                    navbar.classList.remove('opacity-100');
+                    navbar.classList.add('opacity-75');
+
+                    mobileNav.classList.remove('opacity-100');
+                    mobileNav.classList.add('opacity-75');
+                }
+            });    
+            
+        }
+
+    });
+</script>
