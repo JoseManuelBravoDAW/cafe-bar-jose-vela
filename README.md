@@ -1,8 +1,16 @@
-Repositorio para la web del Café Bar José Vela
+# Café Bar José Vela Website Repository
 
-Para cambiar el menú, modificar products.js
+Este repositorio contiene el código para la página web del **Café Bar José Vela**.
 
-La cuenta de correo a la que van los mails se configura con las variables de entorno:
-    CORREO = dirección de correo
-    CONTRASENA = contraseña de aplicación, no de la cuenta de correo
-    TIPOCORREO = por ejemplo, "Gmail"
+## Instrucciones
+
+### Cambiar el Menú
+Para actualizar el menú, debes modificar el archivo `products.js`.
+
+### Configuración de Correo Electrónico
+La cuenta de correo a la que se envían los mensajes se configura utilizando las siguientes variables de entorno:
+
+- **CORREO**: Dirección de correo electrónico
+- **CONTRASENA**: Contraseña de aplicación (no la contraseña de la cuenta de correo)
+- **TIPOCORREO**: Tipo de correo (por ejemplo, `Gmail`)
+
